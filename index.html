@@ -5,40 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>كاستيللو للدهانات - كل عام وأنتم بخير</title>
     
-    <!-- الخط المزخرف من Google Fonts -->
+    <!-- الخطوط الفاخرة -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;700;900&family=El+Messiri:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
-        /* متغيرات CSS */
         :root {
-            --primary-color: #e94560;
-            --secondary-color: #ffd700;
-            --text-color: #ffffff;
-            --card-bg: rgba(255, 255, 255, 0.12);
+            --gold: #d4af37;
+            --gold-light: #f4d03f;
+            --gold-dark: #b8860b;
+            --purple: #4a235a;
+            --dark: #1c2833;
+            --cream: #fcf3cf;
+            --white: #ffffff;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Amiri', 'Tajawal', serif;
+            font-family: 'El Messiri', 'Amiri', 'Cairo', serif;
             min-height: 100vh;
-            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            background: linear-gradient(135deg, var(--dark) 0%, #1a1a2e 50%, var(--purple) 100%);
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            overflow-x: hidden;
             position: relative;
+            overflow-x: hidden;
         }
 
-        /* تأثير النجوم */
-        .stars {
+        /* جزيئات ذهبية */
+        .gold-particles {
             position: fixed;
             top: 0;
             left: 0;
@@ -46,399 +44,394 @@
             height: 100%;
             pointer-events: none;
             z-index: 0;
+            overflow: hidden;
         }
 
-        .star {
+        .gold-particle {
             position: absolute;
-            width: 3px;
-            height: 3px;
-            background: #ffd700;
+            width: 6px;
+            height: 6px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
             border-radius: 50%;
-            animation: twinkle 2s infinite;
+            animation: float-gold 6s ease-in-out infinite;
+            box-shadow: 0 0 10px var(--gold);
         }
 
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.5); }
+        @keyframes float-gold {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+            50% { transform: translateY(-100px) rotate(180deg); opacity: 1; }
         }
 
-        /* Lanterns */
-        .lanterns {
+        /* إطار ذهبي */
+        .gold-frame {
             position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
             z-index: 1;
+            border: 20px solid transparent;
+            border-image: linear-gradient(135deg, var(--gold), var(--gold-dark), var(--gold)) 1;
+            opacity: 0.1;
         }
 
-        .lantern {
-            position: absolute;
-            font-size: 60px;
-            animation: swing 3s ease-in-out infinite;
-            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
-        }
-
-        .lantern:nth-child(1) { top: 5%; left: 10%; animation-delay: 0s; }
-        .lantern:nth-child(2) { top: 8%; right: 15%; animation-delay: 0.5s; font-size: 50px; }
-        .lantern:nth-child(3) { top: 15%; left: 20%; animation-delay: 1s; font-size: 45px; }
-
-        @keyframes swing {
-            0%, 100% { transform: rotate(-5deg); }
-            50% { transform: rotate(5deg); }
-        }
-
-        /* الحاوية الرئيسية */
+        /* الحاوية */
         .container {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 30px;
+            background: linear-gradient(145deg, rgba(40, 25, 60, 0.95), rgba(28, 40, 51, 0.98));
+            backdrop-filter: blur(25px);
+            border-radius: 25px;
             padding: 50px 45px;
             max-width: 600px;
             width: 100%;
             text-align: center;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4),
-                        inset 0 0 0 1px rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(212, 175, 55, 0.2);
+            border: 1px solid rgba(212, 175, 55, 0.15);
             position: relative;
             z-index: 10;
-            animation: float 6s ease-in-out infinite;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            bottom: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
         }
 
-        /* العنوان */
-        .header {
-            margin-bottom: 30px;
+        .gold-stripe {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
         }
 
-        .logo-icon {
-            font-size: 70px;
-            margin-bottom: 10px;
-            animation: pulse 2s ease-in-out infinite;
+        .header { margin-bottom: 35px; }
+
+        .logo-badge {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 15px;
+            background: linear-gradient(145deg, var(--gold-light), var(--gold-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
+            animation: badge-pulse 3s ease-in-out infinite;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+        @keyframes badge-pulse {
+            0%, 100% { box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5); }
+            50% { box-shadow: 0 8px 40px rgba(212, 175, 55, 0.7); }
         }
 
         h1 {
             font-family: 'Amiri', serif;
-            color: var(--secondary-color);
-            font-size: 38px;
-            margin-bottom: 8px;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-            font-weight: 700;
+            font-size: 42px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
         }
 
         .company-name {
-            font-family: 'Tajawal', sans-serif;
-            color: var(--primary-color);
-            font-size: 24px;
+            font-family: 'Cairo', sans-serif;
+            color: var(--white);
+            font-size: 26px;
             font-weight: 900;
-            background: linear-gradient(135deg, #ffd700, #ff6b6b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            letter-spacing: 3px;
         }
 
-        /* نموذج الإدخال */
+        .tagline {
+            color: rgba(212, 175, 55, 0.8);
+            font-size: 15px;
+            margin-top: 10px;
+        }
+
+        .divider {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 25px auto;
+        }
+
         .input-section {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 35px 30px;
-            border-radius: 25px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 38px 32px;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
         }
 
         .input-section h2 {
-            font-family: 'Tajawal', sans-serif;
-            color: #fff;
+            font-family: 'El Messiri', serif;
+            color: var(--cream);
             font-size: 22px;
-            margin-bottom: 25px;
-            font-weight: 700;
+            margin-bottom: 28px;
         }
 
         input[type="text"] {
             width: 100%;
             padding: 20px 30px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-radius: 60px;
-            font-size: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50px;
+            font-size: 22px;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--white);
             outline: none;
             transition: all 0.4s ease;
             text-align: center;
-            font-family: 'Amiri', serif;
-            font-size: 24px;
+            font-family: 'El Messiri', serif;
         }
 
         input[type="text"]::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-            font-family: 'Tajawal', sans-serif;
-            font-size: 18px;
+            color: rgba(255, 255, 255, 0.5);
+            font-family: 'Cairo', sans-serif;
+            font-size: 17px;
         }
 
         input[type="text"]:focus {
-            border-color: var(--secondary-color);
-            background: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3),
-                        0 10px 40px rgba(0, 0, 0, 0.2);
-            transform: scale(1.02);
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 35px rgba(212, 175, 55, 0.2);
         }
 
-        /* الزر */
-        .btn-submit {
-            background: linear-gradient(135deg, var(--primary-color), #ff6b6b);
-            color: #fff;
+        .submit-btn {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--dark);
             border: none;
             padding: 20px 60px;
-            border-radius: 60px;
-            font-size: 22px;
-            font-weight: bold;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: 900;
             cursor: pointer;
             margin-top: 25px;
             transition: all 0.4s ease;
-            box-shadow: 0 15px 40px rgba(233, 69, 96, 0.5);
-            font-family: 'Tajawal', sans-serif;
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+            font-family: 'Cairo', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        .btn-submit::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
+        .submit-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.6);
         }
 
-        .btn-submit:hover::before {
-            left: 100%;
-        }
-
-        .btn-submit:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 20px 50px rgba(233, 69, 96, 0.6);
-        }
-
-        /* صندوق التهنئة */
-        .greeting-section {
+        /* التهنئة =======*/
+        .greeting-card {
             display: none;
-            background: linear-gradient(135deg, #ffd700 0%, #ffed4a 50%, #ffc107 100%);
-            padding: 45px 35px;
-            border-radius: 30px;
+            background: linear-gradient(145deg, var(--cream), #f9e79f);
+            padding: 50px 40px;
+            border-radius: 20px;
             margin-top: 25px;
-            animation: fadeInScale 0.8s ease;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4),
-                        0 0 40px rgba(255, 215, 0, 0.3);
+            animation: slide-up 0.8s ease;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 0 3px var(--gold);
             position: relative;
-            overflow: hidden;
         }
 
-        @keyframes fadeInScale {
-            from {
-                opacity: 0;
-                transform: scale(0.5) translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
+        @keyframes slide-up {
+            from { opacity: 0; transform: translateY(50px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        /* تأثيرات داخل التهنئة */
-        .greeting-section::before {
-            content: '☪';
+        .greeting-card::before {
+            content: '✨ 🐪 🌙 💫';
             position: absolute;
-            top: -20px;
-            right: -20px;
-            font-size: 120px;
-            opacity: 0.15;
-            color: #1a1a2e;
+            top: 10px;
+            left: 0;
+            width: 100%;
+            font-size: 18px;
+            letter-spacing: 30px;
+            opacity: 0.3;
+            text-align: center;
         }
 
-        .greeting-section::after {
-            content: '☪';
+        .greeting-card::after {
+            content: '✨ 🌙 🐪 💫';
             position: absolute;
-            bottom: -30px;
-            left: -30px;
-            font-size: 100px;
-            opacity: 0.15;
-            color: #1a1a2e;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            font-size: 18px;
+            letter-spacing: 30px;
+            opacity: 0.3;
+            text-align: center;
         }
 
-        .greeting-section h2 {
+        .greeting-card .header-badge {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            box-shadow: 0 5px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        .greeting-card h2 {
             font-family: 'Amiri', serif;
-            color: #1a1a2e;
+            color: var(--purple);
             font-size: 36px;
             margin-bottom: 20px;
-            font-weight: 700;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-            position: relative;
         }
 
-        .greeting-section .eid-icon {
-            font-size: 80px;
-            margin-bottom: 15px;
-            animation: bounce 1s ease-in-out infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .greeting-section p {
-            font-family: 'Amiri', serif;
-            color: #333;
-            font-size: 22px;
+        .greeting-card p {
+            font-family: 'El Messiri', serif;
+            color: #2c3e50;
+            font-size: 20px;
             line-height: 2.2;
             position: relative;
             z-index: 1;
         }
 
-        .greeting-section .user-name {
+        .greeting-card .client-name {
             font-family: 'Amiri', serif;
-            color: #1a1a2e;
+            color: var(--purple);
             font-weight: bold;
-            font-size: 32px;
+            font-size: 30px;
         }
 
-        .greeting-section .company-text {
-            font-family: 'Tajawal', sans-serif;
-            color: #e94560;
+        .greeting-card .brand-name {
+            font-family: 'Cairo', sans-serif;
+            color: #c0392b;
             font-weight: 900;
             font-size: 26px;
+            text-transform: uppercase;
         }
 
-        /* زر الرجوع */
-        .btn-back {
-            background: #1a1a2e;
-            border: none;
-            padding: 15px 40px;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
+        .greeting-card .message {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--purple);
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px dashed rgba(74, 35, 90, 0.2);
+        }
+
+        .back-btn {
+            background: var(--purple);
+            color: var(--white);
             margin-top: 25px;
-            transition: all 0.4s ease;
-            font-family: 'Tajawal', sans-serif;
-            position: relative;
-            z-index: 1;
         }
 
-        .btn-back:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
+        .back-btn:hover { background: #6c3483; }
 
-        /* footer */
         .footer {
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.5);
             margin-top: 30px;
-            font-family: 'Tajawal', sans-serif;
-            font-size: 14px;
+            font-size: 13px;
             line-height: 2;
         }
 
-        .footer a {
-            color: var(--secondary-color);
-            text-decoration: none;
-        }
-
-        /* تأثير الأجمات عند النجاح */
-        .confetti {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            top: -10px;
-            opacity: 0;
-            pointer-events: none;
-            animation: fall 3s linear forwards;
-            z-index: 100;
-        }
-
-        @keyframes fall {
-            to {
-                opacity: 1;
-                transform: translateY(100vh) rotate(720deg);
-            }
-        }
-
-        /* للشاشات الصغيرة */
         @media (max-width: 600px) {
-            .container {
-                padding: 35px 25px;
-            }
-
-            h1 {
-                font-size: 28px;
-            }
-
-            .company-name {
-                font-size: 20px;
-            }
-
-            .logo-icon {
-                font-size: 55px;
-            }
-
-            .input-section {
-                padding: 25px 20px;
-            }
-
-            input[type="text"] {
-                font-size: 18px;
-                padding: 15px 20px;
-            }
-
-            .btn-submit {
-                font-size: 18px;
-                padding: 15px 45px;
-            }
-
-            .greeting-section h2 {
-                font-size: 28px;
-            }
-
-            .greeting-section p {
-                font-size: 18px;
-            }
-
-            .greeting-section .user-name {
-                font-size: 26px;
-            }
-
-            .greeting-section .company-text {
-                font-size: 22px;
-            }
-
-            .lantern {
-                font-size: 40px !important;
-            }
+            .container { padding: 35px 25px; }
+            h1 { font-size: 32px; }
+            .company-name { font-size: 20px; }
+            .logo-badge { width: 70px; height: 70px; font-size: 32px; }
+            .greeting-card h2 { font-size: 28px; }
+            .greeting-card .client-name { font-size: 24px; }
         }
     </style>
 </head>
 <body>
-    <!-- تأثير النجوم -->
-    <div class="stars" id="stars"></div>
-
-    <!-- Lanterns -->
-    <div class="lanterns">
-        <div class="lantern">🏮</div>
-        <div class="lantern">🏮</div>
-        <div class="lantern">🏮</div>
-    </div>
+    <!-- جزيئات ذهبية -->
+    <div class="gold-particles" id="goldParticles"></div>
 
     <div class="container">
+        <div class="gold-stripe"></div>
+        
         <div class="header">
-            <div class="logo-icon">🏮</div>
+            <div class="logo-badge">🎨</div>
+            <h1>كل عام وأنتم بخير</h1>
+            <p class="company-name">كاستيللو للدهانات</p>
+            <p class="tagline">نرسم أحلامك بأجمل الألوان</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- إدخال الاسم -->
+        <div class="input-section" id="inputSection">
+            <h2>✨ أدخل اسمك للحصول على تهنئتك الخاصة ✨</h2>
+            <input type="text" id="userName" placeholder="اكتب اسمك الكريم هنا...">
+            <button class="submit-btn" onclick="showGreeting()">🎊 أرسل التهنئة</button>
+        </div>
+
+        <!-- التهنئة -->
+        <div class="greeting-card" id="greetingCard">
+            <div class="header-badge">🐪</div>
+            <h2>🌙عيد الأضحى المبارك🌙</h2>
+            <p>
+                عزيزي <span class="client-name" id="displayName"></span> 🙏<br><br>
+                تتقدم لكم شركة <span class="brand-name">كاستيللو للدهانات</span><br>
+                بأطيب التمنيات بعيد الأضحى المبارك 🐏<br><br>
+                <span class="message">🎉 كل عام وأنتم بخير! 🎉</span>
+            </p>
+            <button class="submit-btn back-btn" onclick="goBack()">🔄 تهنئة أخرى</button>
+        </div>
+
+        <div class="footer">
+            <p>📍 العنوان: [أدخل العنوان]</p>
+            <p>📞 الهاتف: [أدخل الرقم]</p>
+        </div>
+    </div>
+
+    <script>
+        // إنشاء الجزيئات الذهبية
+        function createGoldParticles() {
+            const container = document.getElementById('goldParticles');
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'gold-particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.width = (Math.random() * 4 + 2) + 'px';
+                particle.style.height = particle.style.width;
+                container.appendChild(particle);
+            }
+        }
+        createGoldParticles();
+
+        // إظهار التهنئة ======
+        function showGreeting() {
+            var name = document.getElementById('userName').value.trim();
+            
+            if (name === "") {
+                alert("من فضلك ادخل اسمك!");
+                return;
+            }
+
+            // إخفاء النموذج وإظهار التهنئة
+            document.getElementById('inputSection').style.display = 'none';
+            document.getElementById('displayName').innerHTML = name;
+            document.getElementById('greetingCard').style.display = 'block';
+        }
+
+        // الرجوع
+        function goBack() {
+            document.getElementById('userName').value = "";
+            document.getElementById('greetingCard').style.display = 'none';
+            document.getElementById('inputSection').style.display = 'block';
+        }
+
+        // دعم Enter key
+        document.getElementById('userName').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                showGreeting();
+            }
+        });
+    </script>
+</body>
+</html>
